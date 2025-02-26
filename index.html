@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Particle System</title>
+    <!-- Link to our stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main container for our application -->
+    <div class="container">
+        <header>
+            <h1>Interactive Particle System</h1>
+            <div class="controls">
+                <div class="control-group">
+                    <label for="particles">Particles:</label>
+                    <input type="range" id="particles" min="10" max="300" value="100">
+                    <span id="particle-count">100</span>
+                </div>
+                <div class="control-group">
+                    <label for="connection-radius">Connection Radius:</label>
+                    <input type="range" id="connection-radius" min="50" max="250" value="150">
+                    <span id="radius-value">150px</span>
+                </div>
+                <div class="control-group">
+                    <label for="particle-speed">Speed:</label>
+                    <input type="range" id="particle-speed" min="0.1" max="3" step="0.1" value="1">
+                    <span id="speed-value">1x</span>
+                </div>
+                <div class="control-group">
+                    <label for="color-theme">Color Theme:</label>
+                    <select id="color-theme">
+                        <option value="blue">Ocean Blue</option>
+                        <option value="green">Forest Green</option>
+                        <option value="purple">Cosmic Purple</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="grayscale">Grayscale</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Canvas will be drawn here -->
+        <canvas id="particle-canvas"></canvas>
+
+        <!-- Information panel that will appear on hover -->
+        <div id="info-panel" class="hidden">
+            <h3>Particle Information</h3>
+            <div id="particle-info"></div>
+        </div>
+
+        <!-- Stats display -->
+        <div class="stats">
+            <div id="fps">FPS: 0</div>
+            <div id="active-connections">Active Connections: 0</div>
+        </div>
+    </div>
+
+    <!-- Info button and modal -->
+    <button id="info-button">?</button>
+    <div id="info-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>About This Project</h2>
+            <p>This interactive particle system demonstrates several key web development concepts:</p>
+            <ul>
+                <li>Canvas manipulation for dynamic graphics</li>
+                <li>Physics-based animation</li>
+                <li>User interaction with mouse and controls</li>
+                <li>Color theory and visual effects</li>
+                <li>Performance optimization techniques</li>
+            </ul>
+            <p>Interact with the particles by moving your mouse across the canvas. Adjust the controls to see how different settings affect the system.</p>
+        </div>
+    </div>
+
+    <!-- Scripts at the end for better page load performance -->
+    <script src="particle.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

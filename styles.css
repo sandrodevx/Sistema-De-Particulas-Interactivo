@@ -1,0 +1,253 @@
+/* Base styling and reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow: hidden; /* Prevent scrollbars from appearing */
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styling */
+header {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid #333;
+    z-index: 10;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Controls section */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.9rem;
+    min-width: 80px;
+}
+
+input[type="range"] {
+    width: 150px;
+    cursor: pointer;
+}
+
+select {
+    padding: 0.25rem;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+span {
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Canvas container */
+#particle-canvas {
+    flex-grow: 1; /* Take up all available space */
+    background-color: #121212;
+    cursor: crosshair;
+}
+
+/* Stats display */
+.stats {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    z-index: 10;
+}
+
+/* Info Panel (appears on hover) */
+#info-panel {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 1rem;
+    min-width: 200px;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    pointer-events: none; /* Don't interfere with mouse events */
+    transition: opacity 0.2s;
+}
+
+#info-panel h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #fff;
+}
+
+#particle-info {
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* Info button and modal */
+#info-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #444;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    transition: background-color 0.2s;
+}
+
+#info-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #222;
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.modal-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.modal-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* Color theme classes for particles (these will be used in JavaScript) */
+.theme-blue {
+    --particle-color-1: #0066ff;
+    --particle-color-2: #00c3ff;
+    --particle-color-3: #80dfff;
+    --background-color: #001429;
+    --connection-color: rgba(0, 102, 255, 0.2);
+}
+
+.theme-green {
+    --particle-color-1: #00b300;
+    --particle-color-2: #33ff33;
+    --particle-color-3: #99ff99;
+    --background-color: #0a2900;
+    --connection-color: rgba(0, 179, 0, 0.2);
+}
+
+.theme-purple {
+    --particle-color-1: #6600cc;
+    --particle-color-2: #9933ff;
+    --particle-color-3: #cc99ff;
+    --background-color: #1a0033;
+    --connection-color: rgba(102, 0, 204, 0.2);
+}
+
+.theme-sunset {
+    --particle-color-1: #ff3300;
+    --particle-color-2: #ff9900;
+    --particle-color-3: #ffcc00;
+    --background-color: #330000;
+    --connection-color: rgba(255, 51, 0, 0.2);
+}
+
+.theme-grayscale {
+    --particle-color-1: #666666;
+    --particle-color-2: #999999;
+    --particle-color-3: #cccccc;
+    --background-color: #1a1a1a;
+    --connection-color: rgba(102, 102, 102, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .control-group {
+        width: 100%;
+        max-width: 300px;
+        justify-content: space-between;
+    }
+}
